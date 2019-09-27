@@ -80,6 +80,10 @@ static bool IsDeviceUnlocked() {
 static constexpr const char* adb_keys_data = "/data/misc/adb/adb_keys";
 static constexpr const char* adb_keys_root = "/adb_keys";
 
+static std::string get_build_type() {
+  return android::base::GetProperty("ro.build.type", "");
+}
+
 static void UiLogger(android::base::LogId log_buffer_id, android::base::LogSeverity severity,
                      const char* tag, const char* file, unsigned int line, const char* message) {
   android::base::KernelLogger(log_buffer_id, severity, tag, file, line, message);
